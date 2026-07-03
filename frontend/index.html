@@ -1,0 +1,280 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Active Routes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Raw.css">
+</head>
+<div>
+<div class="app">
+
+  <!-- LANDING PAGE -->
+<div id="landingPage" class="landing-page">
+  <div class="landing-container">
+    <!-- Header -->
+    <div class="landing-header">
+      <div class="landing-logo">🚀</div>
+      <h1>AI Active Routes</h1>
+      <p class="landing-tagline">Generate AI-powered content on any topic</p>
+    </div>
+
+    <!-- What is it -->
+    <div class="landing-section">
+      <h2>What is AI Active Routes?</h2>
+      <p>AI Active Routes is an intelligent content generation platform that leverages multiple AI providers to create diverse, high-quality content tailored to your specific needs. Whether you need news updates, blog articles, or trend analysis, our platform delivers customized content in seconds.</p>
+    </div>
+
+    <!-- Why it was made -->
+    <div class="landing-section">
+      <h2>Why Was It Made?</h2>
+      <p>Creating engaging content is time-consuming and resource-intensive. AI Active Routes was built to democratize content creation by combining the power of multiple AI models (Grok, Cohere, Cerebras, Mistral) to provide you with varied perspectives and comprehensive insights on any topic you're interested in.</p>
+    </div>
+
+    <!-- How it works -->
+    <div class="landing-section">
+      <h2>How Does It Work?</h2>
+      <div class="landing-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-title">Enter Your Topic</div>
+          <p>Tell us what you want to explore - anything from technology to climate, startups to culture.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-title">Choose a Category</div>
+          <p>Select from News, Blog, or Updates to customize the type of content you need.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-title">Pick Your AI Provider</div>
+          <p>Choose from Grok, Cohere, Cerebras, or Mistral to get different perspectives.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-title">Get Your Content</div>
+          <p>Receive beautifully formatted content with deep insights, key points, and conclusions.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <div class="landing-section">
+      <h2>Key Features</h2>
+      <div class="landing-features">
+        <div class="feature">
+          <span class="feature-icon">🤖</span>
+          <h3>Multi-AI Support</h3>
+          <p>Access 4 different AI models for diverse perspectives</p>
+        </div>
+        <div class="feature">
+          <span class="feature-icon">⚡</span>
+          <h3>Instant Generation</h3>
+          <p>Get content in seconds, not hours</p>
+        </div>
+        <div class="feature">
+          <span class="feature-icon">📋</span>
+          <h3>Easy Copy</h3>
+          <p>One-click copy to use content anywhere</p>
+        </div>
+        <div class="feature">
+          <span class="feature-icon">🎯</span>
+          <h3>Customizable</h3>
+          <p>Choose topics, categories, and providers</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Button -->
+    <button class="btn-launch" onclick="goToApp()">
+      Get Started Now →
+    </button>
+  </div>
+</div>
+
+<!-- MAIN APP (Hidden initially) -->
+<div class="app" id="mainApp" style="display: none;">
+ 
+  
+  <!-- Header -->
+  <div class="header">
+    <h1>AI Active Routes</h1>
+    <p class="subtitle">Generate AI-powered content on any topic</p>
+  </div>
+
+  <!-- STEP 1: Topic Input -->
+  <div class="panel">
+    <div class="panel-title">Step 1 — Enter Your Topic</div>
+    <div class="input-row">
+      <input
+        type="text"
+        class="topic-input"
+        id="topicInput"
+        placeholder="Enter a topic (e.g., AI, Startups, Climate)"
+        autocomplete="off"
+      />
+      <button class="btn-continue" onclick="handleContinue()">Continue →</button>
+    </div>
+  </div>
+
+  <!-- STEP 2: Category -->
+  <div class="panel">
+    <div class="panel-title">Step 2 — Choose Category</div>
+    <div class="category-grid">
+      <div class="cat-card" data-cat="news" onclick="selectCategory(this)">
+        <span class="cat-icon">📰</span>
+        <div class="cat-name">News</div>
+        <div class="cat-desc">Latest headlines & breaking stories</div>
+      </div>
+      <div class="cat-card" data-cat="blog" onclick="selectCategory(this)">
+        <span class="cat-icon">✍️</span>
+        <div class="cat-name">Blog</div>
+        <div class="cat-desc">In-depth articles & opinions</div>
+      </div>
+      <div class="cat-card" data-cat="updates" onclick="selectCategory(this)">
+        <span class="cat-icon">🔔</span>
+        <div class="cat-name">Updates</div>
+        <div class="cat-desc">Trends, releases & announcements</div>
+      </div>
+    </div>
+    <div class="locked-hint" id="catHint">🔒 Enter a topic above to unlock categories</div>
+  </div>
+
+  <!-- STEP 3: Provider -->
+  <div class="panel">
+    <div class="panel-title">Step 3 — Select AI Provider</div>
+<div class="provider-grid">
+
+  <!-- Grok -->
+  <div class="prov-card" data-prov="Grok" onclick="selectProvider(this)">
+    <div class="prov-icon" style="background:rgba(255,255,255,0.08)">𝕏</div>
+    <div class="prov-info">
+      <div class="prov-name">Grok</div>
+      <div class="prov-desc">xAI's advanced AI model</div>
+      <div class="prov-desc">
+        Real-time knowledge and powerful reasoning capabilities for content generation. 
+      </div>
+    </div>
+  </div>
+
+  <!-- Cohere -->
+  <div class="prov-card" data-prov="Cohere" onclick="selectProvider(this)">
+    <div class="prov-icon" style="background:rgba(0,255,170,0.12)">C</div>
+    <div class="prov-info">
+      <div class="prov-name">Cohere</div>
+      <div class="prov-desc">Enterprise AI platform</div>
+      <div class="prov-desc">
+        Optimized for text generation, summarization, classification, and RAG applications. 
+      </div>
+    </div>
+  </div>
+
+  <!-- Cerebras -->
+  <div class="prov-card" data-prov="Cerebras" onclick="selectProvider(this)">
+    <div class="prov-icon" style="background:rgba(255,120,0,0.12)">⚡</div>
+    <div class="prov-info">
+      <div class="prov-name">Cerebras</div>
+      <div class="prov-desc">Ultra-fast AI inference</div>
+      <div class="prov-desc">
+        High-speed AI processing powered by Cerebras Wafer-Scale Engine technology. 
+      </div>
+    </div>
+  </div>
+
+  <!-- Mistral -->
+  <div class="prov-card" data-prov="Mistral" onclick="selectProvider(this)">
+    <div class="prov-icon" style="background:rgba(255,180,0,0.12)">🌪</div>
+    <div class="prov-info">
+      <div class="prov-name">Mistral</div>
+      <div class="prov-desc">Open-weight AI models</div>
+      <div class="prov-desc">
+        Efficient multilingual models designed for coding, reasoning, and text generation. 
+      </div>
+    </div>
+  </div>
+
+</div>
+    <div class="locked-hint" id="provHint">🔒 Select a category to unlock providers</div>
+
+    <!-- CTA -->
+    <div class="cta-row">
+      <button class="btn-get" id="getBtn" onclick="fetchContent()">
+        ⚡ Generate Content
+      </button>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div class="loading-state" id="loadingState">
+    <div class="spinner"></div>
+    <div class="loading-label" id="loadingLabel">Generating content…</div>
+  </div>
+
+  <!-- Error -->
+  <div class="error-bar" id="errorBar"></div>
+
+  <!-- Results -->
+  <div class="results-section" id="resultsSection">
+    <div class="results-header">
+      <div>
+        <div class="results-title" id="resultsTitle">Results</div>
+        <div class="results-meta" id="resultsMeta"></div>
+      </div>
+      <button class="btn-reset" onclick="resetAll()">← New Search</button>
+    </div>
+    <div class="results-grid" id="resultsGrid"></div>
+  </div>
+</div>
+
+<!-- DETAIL PAGE OVERLAY -->
+<div id="detailOverlay" style="display:none; position:fixed; inset:0; z-index:9999; background:#07080b; overflow-y:auto;">
+  <div class="detail-page" id="detailPage">
+    <div class="detail-topbar">
+      <button class="detail-back" onclick="closeDetail()">
+        <span>←</span> Back to Results
+      </button>
+      <div class="detail-provider-badge" id="detailProviderBadge"></div>
+    </div>
+
+    <div class="detail-loading" id="detailLoading">
+      <div class="detail-spinner"></div>
+      <div class="detail-loading-text" id="detailLoadingText">Fetching from backend…</div>
+    </div>
+
+    <div class="detail-content" id="detailContent">
+      <!-- Title Section -->
+      <div class="detail-section title-section">
+        <div class="section-label">Title</div>
+        <h2 class="detail-title" id="detailTitle"></h2>
+        <div class="detail-meta-row" id="detailMetaRow"></div>
+      </div>
+
+      <!-- Content Section -->
+      <div class="detail-section content-section">
+        <div class="section-label">Content</div>
+        <div class="detail-body" id="detailBody"></div>
+      </div>
+      
+      
+
+      <!-- Conclusion Section -->
+      <div class="detail-section conclusion-section">
+        <div class="section-label">Conclusion</div>
+        <div class="detail-conclusion" id="detailConclusion"></div>
+      </div>
+
+      <!-- Footer Actions -->
+      <div class="detail-actions">
+        <button class="btn-copy" onclick="copyContent()">📋 Copy Content</button>
+        <button class="btn-new" onclick="closeDetail()">← Back to Results</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+<script src="Raw.js"></script>
+</body>
